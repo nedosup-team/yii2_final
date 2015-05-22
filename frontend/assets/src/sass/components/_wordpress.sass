@@ -1,0 +1,56 @@
+$default-shortcode-margin: 35px
+
+.content
+    .alignnone
+        margin: $default-shortcode-margin 0
+        
+    img.alignnone
+        display: inline-block
+        vertical-align: middle
+
+    .aligncenter
+        display: block
+        margin: 0 auto 25px
+
+    .alignright
+        float: right
+        margin: 0 0 $default-shortcode-margin $default-shortcode-margin
+
+    .alignleft
+        float: left
+        margin: 0 $default-shortcode-margin $default-shortcode-margin 0
+
+    .wp-caption-text
+        margin-top: 15px
+        width: 100%
+
+    .wp-caption
+        background: #fff
+        border: 1px solid #f0f0f0
+        max-width: 100%
+        img
+            display: block
+            height: auto
+            width: 100%
+            margin: 0
+            padding: 0
+            border: 0
+        p.wp-caption-text
+            margin: 0
+            padding: 5px
+            background: #ebe7e4
+            +box-sizing(border-box)
+    
+
+
+    .wp-video
+        max-width: 100%
+        width: auto !important
+        .mejs-container,
+        .mejs-layer
+            width: auto
+            height: auto
+            max-width: 100%
+        .mejs-container .mejs-controls
+            right: 0
+

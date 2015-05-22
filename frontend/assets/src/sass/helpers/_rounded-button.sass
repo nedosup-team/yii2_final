@@ -1,0 +1,11 @@
+=rounded-button($height: 42px, $bg: $theme-azure, $text: $theme-dark)
+    height: $height
+    background: $bg
+    background: rgba($bg, .6)
+    color: $text
+    line-height: $height + 2px
+    padding-left: $height/2
+    padding-right: $height/2
+    +border-radius($height/2)
+    &:hover
+        background: $bg
