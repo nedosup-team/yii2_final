@@ -10,7 +10,6 @@ namespace yii\bootstrap;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 
 /**
  * Nav renders a nav HTML component.
@@ -33,6 +32,11 @@ use yii\helpers\Html;
  *                  '<li class="dropdown-header">Dropdown Header</li>',
  *                  ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
  *             ],
+ *         ],
+ *         [
+ *             'label' => 'Login',
+ *             'url' => ['site/login'],
+ *             'visible' => Yii::$app->user->isGuest
  *         ],
  *     ],
  *     'options' => ['class' =>'nav-pills'], // set this to nav-tab to get tab-styled navigation
@@ -93,6 +97,12 @@ class Nav extends Widget
      * @see isItemActive
      */
     public $params;
+    /**
+     * @var string this property allows you to customize the HTML which is used to generate the drop down caret symbol,
+     * which is displayed next to the button text to indicate the drop down functionality.
+     * Defaults to `null` which means `<b class="caret"></b>` will be used. To disable the caret, set this property to be an empty string.
+     */
+    public $dropDownCaret;
 
 
     /**
@@ -106,6 +116,9 @@ class Nav extends Widget
         }
         if ($this->params === null) {
             $this->params = Yii::$app->request->getQueryParams();
+        }
+        if ($this->dropDownCaret === null) {
+            $this->dropDownCaret = Html::tag('b', '', ['class' => 'caret']);
         }
         Html::addCssClass($this->options, 'nav');
     }
@@ -166,7 +179,9 @@ class Nav extends Widget
             $linkOptions['data-toggle'] = 'dropdown';
             Html::addCssClass($options, 'dropdown');
             Html::addCssClass($linkOptions, 'dropdown-toggle');
-            $label .= ' ' . Html::tag('b', '', ['class' => 'caret']);
+            if ($this->dropDownCaret !== '') {
+                $label .= ' ' . $this->dropDownCaret;
+            }
             if (is_array($items)) {
                 if ($this->activateItems) {
                     $items = $this->isChildActive($items, $active);
@@ -241,7 +256,9 @@ class Nav extends Widget
             }
             unset($item['url']['#']);
             if (count($item['url']) > 1) {
-                foreach (array_splice($item['url'], 1) as $name => $value) {
+                $params = $item['url'];
+                unset($params[0]);
+                foreach ($params as $name => $value) {
                     if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
                         return false;
                     }

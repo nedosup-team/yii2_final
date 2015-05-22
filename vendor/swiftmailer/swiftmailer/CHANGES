@@ -1,6 +1,11 @@
 Changelog
 =========
 
+5.4.1 (2015-XX-XX)
+------------------
+
+ * fixed MAIL FROM & RCPT TO headers to be RFC compliant
+
 5.4.0 (2015-03-14)
 ------------------
 
