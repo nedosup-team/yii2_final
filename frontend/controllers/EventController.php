@@ -6,6 +6,7 @@ use common\models\Event;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -38,6 +39,7 @@ class EventController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'items' => Event::find()->asArray()->all()
         ]);
     }
 

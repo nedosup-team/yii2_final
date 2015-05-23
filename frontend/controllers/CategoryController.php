@@ -48,9 +48,11 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $events = $model->getEvents()->asArray()->all();
         return $this->render('view', [
-            'model' => $this->findModel($id),
-            'category_id' => $id
+            'model' => $model,
+            'items' => $events
         ]);
     }
 
