@@ -1,5 +1,10 @@
+.button
+	background: #008cba 
+	&:hover
+		background: #ff9c00
+		text-decoration: none		
 
-		
+
 
 
 .first-step
@@ -17,5 +22,12 @@
 	.submit-container
 		input
 			height: 37px
+			color: #FFF
+			background: #008cba
+			border: none 
+			outline: none
+			+transition(0.3s ease-out)
+			&:hover
+				background: #ff9c00			
 	.button
 		margin: auto

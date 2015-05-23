@@ -2,8 +2,8 @@
 	position: relative
 	.logo
 		position: absolute
-		left: 0
-		top: 0
+		left: 10px
+		top: 10px
 		width: 100px
 		img
 			display: block
@@ -12,18 +12,29 @@
 		color: #FFF
 		text-transform: uppercase
 		font-size: 53px
-		background: #6fd85b
+		line-height: 80px
+		background: #008cba
 		display: inline-block
 		padding: 10px
 		position: absolute
-		right: 0
-		top: 0
+		right: 10px
+		top: 10px
 		+border-radius(50%)
+		display: block
+		border: none
+		outline: none
+		text-decoration: none
+		cursor: pointer
+		+transition(0.3s ease-out)
+		&:hover
+			background: #ff9c00
+
+
 
 	.login
 		text-align: center
 		margin-bottom: 30px
-		padding-top: 31px
+		padding-top: 41px
 		label, input, a, form
 			display: inline-block
 			vertical-align: middle
@@ -34,16 +45,19 @@
 		form
 			margin-right: 0
 		input[type=submit]
-			color: #008CBA
+			color: #008cba
 			background: transparent
 			border: none
 			outline: none 
+			+transition(0.3s ease-out)
 			&:hover
-				color: #6FD85B
+				color: #ff9c00
 		a	
+			color: #008cba
+			+transition(0.3s ease-out)
 			&:hover
 				text-decoration: none
-				color: #6FD85B
+				color: #ff9c00
 
 
 
@@ -55,8 +69,17 @@
 		padding: 37px 20px  
 		border: 1px solid grey 
 		display: block
+		+transition(0.3s ease-out)
+		cursor: pointer
+	.columns:hover
+		span
+			border-color: #ff9c00 
+			color: #ff9c00 
 	.active
 		span
-			background: #6fd85b
-			border-color: #6FD85B 
-			color: #FFF  
+			background: #008cba
+			border-color: #008cba 
+			color: #FFF 
+			&:hover 
+				border-color: #008cba 
+				color: #FFF 

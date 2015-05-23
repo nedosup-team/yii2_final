@@ -3,8 +3,8 @@
 }
 #header .logo {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 10px;
+  top: 10px;
   width: 100px;
 }
 #header .logo img {
@@ -15,20 +15,33 @@
   color: #FFF;
   text-transform: uppercase;
   font-size: 53px;
-  background: #6fd85b;
+  line-height: 80px;
+  background: #008cba;
   display: inline-block;
   padding: 10px;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 10px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+  display: block;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  -moz-transition: ease-out 0.3s;
+  -o-transition: ease-out 0.3s;
+  -webkit-transition: ease-out 0.3s;
+  transition: ease-out 0.3s;
+}
+#header .go:hover {
+  background: #ff9c00;
 }
 #header .login {
   text-align: center;
   margin-bottom: 30px;
-  padding-top: 31px;
+  padding-top: 41px;
 }
 #header .login label, #header .login input, #header .login a, #header .login form {
   display: inline-block;
@@ -42,17 +55,28 @@
   margin-right: 0;
 }
 #header .login input[type=submit] {
-  color: #008CBA;
+  color: #008cba;
   background: transparent;
   border: none;
   outline: none;
+  -moz-transition: ease-out 0.3s;
+  -o-transition: ease-out 0.3s;
+  -webkit-transition: ease-out 0.3s;
+  transition: ease-out 0.3s;
 }
 #header .login input[type=submit]:hover {
-  color: #6FD85B;
+  color: #ff9c00;
+}
+#header .login a {
+  color: #008cba;
+  -moz-transition: ease-out 0.3s;
+  -o-transition: ease-out 0.3s;
+  -webkit-transition: ease-out 0.3s;
+  transition: ease-out 0.3s;
 }
 #header .login a:hover {
   text-decoration: none;
-  color: #6FD85B;
+  color: #ff9c00;
 }
 
 .header-steps {
@@ -66,11 +90,32 @@
   padding: 37px 20px;
   border: 1px solid grey;
   display: block;
+  -moz-transition: ease-out 0.3s;
+  -o-transition: ease-out 0.3s;
+  -webkit-transition: ease-out 0.3s;
+  transition: ease-out 0.3s;
+  cursor: pointer;
+}
+.header-steps .columns:hover span {
+  border-color: #ff9c00;
+  color: #ff9c00;
 }
 .header-steps .active span {
-  background: #6fd85b;
-  border-color: #6FD85B;
+  background: #008cba;
+  border-color: #008cba;
   color: #FFF;
+}
+.header-steps .active span:hover {
+  border-color: #008cba;
+  color: #FFF;
+}
+
+.button {
+  background: #008cba;
+}
+.button:hover {
+  background: #ff9c00;
+  text-decoration: none;
 }
 
 .first-step {
@@ -97,6 +142,17 @@
 }
 .first-step .submit-container input {
   height: 37px;
+  color: #FFF;
+  background: #008cba;
+  border: none;
+  outline: none;
+  -moz-transition: ease-out 0.3s;
+  -o-transition: ease-out 0.3s;
+  -webkit-transition: ease-out 0.3s;
+  transition: ease-out 0.3s;
+}
+.first-step .submit-container input:hover {
+  background: #ff9c00;
 }
 .first-step .button {
   margin: auto;
