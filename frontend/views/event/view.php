@@ -120,16 +120,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 		</div>
 	</div>
-	<div>
-
-	</div>
-</div>
-
-
-<div class="events-view">
-	<div>
-
-		<
-	</div>
+	<script type="text/javascript">
+		window.event_id = '<?= $model->id ?>';
+	</script>
 
 </div>

@@ -1,11 +1,8 @@
 <?php
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use yii\widgets\ActiveForm;
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -26,7 +23,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div class="global-wrap">
     <div id="header">
-        <div class="logo"><img src="/images/logo.png" alt=""></div>
+        <div class="logo"><a href="/"><img src="/images/logo.png" alt=""></a></div>
         <div class="login">
             <?php if (Yii::$app->user->isGuest) : ?>
                 <?php echo \nodge\eauth\Widget::widget(array('action' => 'site/login')); ?>
@@ -46,6 +43,10 @@ AppAsset::register($this);
             <?php endif; ?>
 
         </div>
+	    <?php if (Yii::$app->controller->id == 'event'): ?>
+		    <button id='go' class="go">GO</button>
+
+	    <?php endif; ?>
 
     </div>
     <?= Alert::widget() ?>
@@ -53,21 +54,21 @@ AppAsset::register($this);
 </div>
 <?php $this->endBody() ?>
 <script>
-    jQuery('#test_test').on('click', function(e) {
-        e.preventDefault();
+	jQuery('#go').on('click', function (e) {
+		e.preventDefault();
 
-        jQuery.ajax({
-            url: "http://localhost:8888/participant/create",
-            method: 'POST',
-            data: {
-                event_id: 1,
-                user_id: 1
-            },
-            success: function(data) {
-                console.log(data);
-            }
-        })
-    })
+		jQuery.ajax({
+			url: "http://localhost:8888/participant/create",
+			method: 'POST',
+			data: {
+				event_id: window.event_id,
+				user_id: <?= Yii::$app->getUser()->getId()?>
+			},
+			success: function (data) {
+				console.log(data);
+			}
+		})
+	})
 </script>
 </body>
 </html>

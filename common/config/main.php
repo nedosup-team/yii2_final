@@ -15,13 +15,13 @@ return [
                 //'useStreamsFallback' => true,
             ),
             'services' => array( // You can change the providers and their classes.
-                'google_oauth' => array(
+                /*'google_oauth' => array(
                     // register your app here: https://code.google.com/apis/console/
                     'class' => 'nodge\eauth\services\GoogleOAuth2Service',
                     'clientId' => '638087641592-eflpkofbq0h86o24kjt5tlggts50ihv3.apps.googleusercontent.com',
                     'clientSecret' => 'dHwENjQg_GjSgNPML_HnN6VX',
                     'title' => 'Google (OAuth)',
-                ),
+                ),*/
                 'facebook' => array(
                     // register your app here: https://developers.facebook.com/apps/
                     'class' => 'nodge\eauth\services\extended\FacebookOAuth2Service',
