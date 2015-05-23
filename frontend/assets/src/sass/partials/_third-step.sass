@@ -1,15 +1,30 @@
 .third-step
 	margin: 40px 0
 
+	.nav
+		a
+			color: #008CBA
+			+transition(0.3s ease-out)
+			&:hover
+				color: #FF9C00
+		.active
+			a
+				&:hover
+					background: #008CBA
+					color: #FFF
+
 	.participants
 		.columns
 			margin-bottom: 20px
 			
 	.socials
 		margin-bottom: 40px
-		.item:hover
-			background: grey 
-			text-decoration: none
+		.item
+			+transition(0.3s ease-out)
+			background: #008cba 
+			&:hover
+				background: #ff9c00
+				text-decoration: none
 		
 	.map
 		margin-bottom: 40px
