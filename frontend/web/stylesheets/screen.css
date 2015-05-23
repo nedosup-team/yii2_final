@@ -105,7 +105,7 @@
   border-color: #008cba;
   color: #FFF;
 }
-.header-steps .active span:hover {
+.header-steps .active:hover span {
   border-color: #008cba;
   color: #FFF;
 }
