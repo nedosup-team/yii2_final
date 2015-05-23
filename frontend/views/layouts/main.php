@@ -29,6 +29,7 @@ AppAsset::register($this);
         <div class="logo"><img src="/images/logo.png" alt=""></div>
         <div class="login">
             <?php if (Yii::$app->user->isGuest) : ?>
+                <?php echo \nodge\eauth\Widget::widget(array('action' => 'site/login')); ?>
                 <?php $form = ActiveForm::begin(['id' => 'login-form', 'action' => '/site/login', 'method' => 'post']); ?>
                 <label for="login">Логин</label>
                 <input type="text" name="LoginForm[username]" id="login">
