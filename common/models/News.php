@@ -29,6 +29,17 @@ class News extends \yii\db\ActiveRecord
         return 'news';
     }
 
+    public function fields()
+    {
+        $fields           = parent::fields();
+        $fields['author'] = function () {
+            return $this->getAuthor()->one();
+        };
+        unset($fields['author_id'], $fields['created_at'], $fields['updated_at']);
+
+        return $fields;
+    }
+
     /**
      * @inheritdoc
      */
