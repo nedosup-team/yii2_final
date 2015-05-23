@@ -187,6 +187,10 @@ class User extends ActiveRecord implements IdentityInterface {
 	 */
 	public function getId()
 	{
+		if (strpos($this->getPrimaryKey(), '-')) {
+			return User::findOne(['social_id' => $this->getPrimaryKey()])->getId();
+		}
+
 		return $this->getPrimaryKey();
 	}
 

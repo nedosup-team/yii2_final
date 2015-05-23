@@ -28,6 +28,7 @@ use yii\helpers\ArrayHelper;
  * @property Categories         $category
  * @property User               $author
  * @property News[]             $news
+ * @property Sponsor[]          $sponsor
  */
 class Event extends \yii\db\ActiveRecord {
 	const STATUS_OPEN = 2;
@@ -84,11 +85,11 @@ class Event extends \yii\db\ActiveRecord {
 	{
 		return [
 			'id'          => 'ID',
-			'title'       => 'Title',
-			'content'     => 'Content',
-			'description' => 'Description',
+			'title'       => 'Заголовок',
+			'content'     => 'Содержание',
+			'description' => 'Описание',
 			'category_id' => 'Категория',
-			'address'     => 'Address',
+			'address'     => 'Адресс',
 		];
 	}
 
@@ -141,6 +142,14 @@ class Event extends \yii\db\ActiveRecord {
 	}
 
 	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getSponsors()
+	{
+		return $this->hasMany(Sponsor::className(), ['event_id' => 'id']);
+	}
+
+	/**
 	 * @return array
 	 */
 	public function getCategoriesList()
@@ -161,5 +170,10 @@ class Event extends \yii\db\ActiveRecord {
 		];
 
 		return $statuses[ $this->status ];
+	}
+
+	public function isAuthor()
+	{
+		return (bool) $this->author_id == Yii::$app->getUser()->getId();
 	}
 }
