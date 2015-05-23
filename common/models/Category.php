@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "categories".
@@ -66,5 +67,13 @@ class Category extends \yii\db\ActiveRecord
     public function getEvents()
     {
         return $this->hasMany(Event::className(), ['category_id' => 'id']);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getEventsList()
+    {
+        return ArrayHelper::map(Category::find()->asArray()->all(), 'id', 'title');
     }
 }

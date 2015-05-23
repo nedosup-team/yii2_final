@@ -251,4 +251,12 @@ class User extends ActiveRecord implements IdentityInterface {
 	{
 		$this->password_reset_token = null;
 	}
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParticipantEvents()
+    {
+        return $this->hasMany(EventParticipant::className(), ['user_id' => 'id']);
+    }
 }
