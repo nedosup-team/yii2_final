@@ -119,9 +119,8 @@ class User extends ActiveRecord implements IdentityInterface
             return new self(Yii::$app->getSession()->get('user-'.$id));
         }
         else {
-            return isset(self::$users[$id]) ? new self(self::$users[$id]) : null;
+            return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
         }
-        //return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
