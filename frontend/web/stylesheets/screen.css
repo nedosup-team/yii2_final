@@ -6,6 +6,9 @@
   left: 10px;
   top: 10px;
   width: 100px;
+  display: block;
+  text-decoration: none;
+  outline: none;
 }
 #header .logo img {
   display: block;
@@ -43,7 +46,7 @@
   margin-bottom: 30px;
   padding-top: 41px;
 }
-#header .login label, #header .login input, #header .login a, #header .login form {
+#header .login label, #header .login input, #header .login a, #header .login form, #header .login .eauth {
   display: inline-block;
   vertical-align: middle;
   text-align: left;

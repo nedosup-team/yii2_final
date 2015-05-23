@@ -15,16 +15,13 @@ if (Yii::$app->getSession()->hasFlash('error')) {
 }
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p class="lead">Do you already have an account on one of these sites? Click the logo to log in with it here:</p>
-    <?php echo \nodge\eauth\Widget::widget(array('action' => 'site/login')); ?>
 
-    <p>Please fill out the following fields to login:</p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+	<div class="row">
+		<div class="col-lg-5">
+			<h1><?= Html::encode($this->title) ?></h1>
+			<?php echo \nodge\eauth\Widget::widget(array('action' => 'site/login')); ?>
+			<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
                 <?= $form->field($model, 'username') ?>
                 <?= $form->field($model, 'password')->passwordInput() ?>
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
