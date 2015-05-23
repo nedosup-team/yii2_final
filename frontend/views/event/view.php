@@ -8,15 +8,17 @@ use yii\helpers\Html;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Events', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$user = $model->getAuthor()->one();
 ?>
 <div class="third-step">
 	<div class="content">
 		<div class="row">
 			<div class="small-3 columns">
 				<div class="author">
+					<h4>Автор:</h4>
 					<img src="http://placehold.it/80x80&amp;text=[img]">
 
-					<p><?= $model->description ?></p>
+					<p><?= $user->username ?></p>
 				</div>
 				<div class="participants">
 					<h4>На это событие идут:</h4>

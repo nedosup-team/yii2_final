@@ -33,6 +33,7 @@ $this->title = 'My Yii Application';
                         </label>
                     <?php \yii\widgets\ActiveForm::end(); ?>
                     <a href="/event" class="button round">Побачити все</a>
+                    <a href="/event/create" class="button round">Створити подію</a>
                 </div>
             </div>
         </div>

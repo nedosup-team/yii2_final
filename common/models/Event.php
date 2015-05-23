@@ -89,7 +89,7 @@ class Event extends \yii\db\ActiveRecord {
 			'content'     => 'Содержание',
 			'description' => 'Описание',
 			'category_id' => 'Категория',
-			'address'     => 'Адресс',
+			'address'     => 'Адрес',
 		];
 	}
 
