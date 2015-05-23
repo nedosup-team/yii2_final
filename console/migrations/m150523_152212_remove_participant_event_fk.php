@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m150523_152212_remove_event_fk extends Migration {
+class m150523_152212_remove_participant_event_fk extends Migration {
     public function up()
     {
         $this->dropForeignKey("fk_participant_event", "event_participant");
