@@ -24,7 +24,7 @@ return [
                 ),
                 'facebook' => array(
                     // register your app here: https://developers.facebook.com/apps/
-                    'class' => 'nodge\eauth\services\FacebookOAuth2Service',
+                    'class' => 'nodge\eauth\services\extended\FacebookOAuth2Service',
                     'clientId' => '366936736844789',
                     'clientSecret' => 'a92175e01ba74201cf28a45e3bd134f3',
                 ),
