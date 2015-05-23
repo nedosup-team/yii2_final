@@ -41,6 +41,19 @@
 #header .login form {
   margin-right: 0;
 }
+#header .login input[type=submit] {
+  color: #008CBA;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+#header .login input[type=submit]:hover {
+  color: #6FD85B;
+}
+#header .login a:hover {
+  text-decoration: none;
+  color: #6FD85B;
+}
 
 .header-steps {
   margin: 80px 0 40px;
@@ -101,6 +114,10 @@
 }
 .third-step .socials {
   margin-bottom: 40px;
+}
+.third-step .socials .item:hover {
+  background: grey;
+  text-decoration: none;
 }
 .third-step .map {
   margin-bottom: 40px;
