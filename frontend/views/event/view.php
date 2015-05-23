@@ -27,7 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?= DetailView::widget([
 		'model'      => $model,
 		'attributes' => [
-			'id',
 			'title',
 			'content:ntext',
 			'description:ntext',
@@ -43,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			[
 				'attribute' => 'category_id',
-				'label'     => 'Статус',
+				'label'     => 'Категория',
 				'value'     => $model->getCategoryName(),
 			],
 			'created_at:datetime',
@@ -53,12 +52,14 @@ $this->params['breadcrumbs'][] = $this->title;
 			'address',
 		],
 	]) ?>
-	<div class="create-news">
-		<?= $this->render('@frontend/views/news/_form', [
-			'model'    => new \common\models\News(),
-			'event_id' => $model->id
-		]) ?>
-	</div>
+	<?php if ($model->isAuthor()): ?>
+		<div class="create-news">
+			<?= $this->render('@frontend/views/news/_form', [
+				'model'    => new \common\models\News(),
+				'event_id' => $model->id
+			]) ?>
+		</div>
+	<?php endif; ?>
 	<div>
 		<?php $news = $model->getNews()->all() ?>
 
@@ -66,31 +67,46 @@ $this->params['breadcrumbs'][] = $this->title;
 			<h4>Опубликованные новости</h4>
 			<?php foreach ($news as $item): ?>
 				<?= DetailView::widget([
-					'model' => $item,
+					'model'      => $item,
 					'attributes' => [
 						'title',
 						'created_at:datetime',
 						[
 							'attribute' => 'author_id',
-							'value' => $model->getAuthor()->one()->username,
+							'value'     => $model->getAuthor()->one()->username,
 						],
 						'description:ntext',
 						[
 							'attribute' => 'actions',
-							'format'=>'raw',
-							'value' => Html::a('Изменить', ['news/edit', 'id' => $item->id], ['class' => 'btn btn-primary'])
-							           .'  '.
-							           Html::a('Удалить', ['news/delete', 'id' => $item->id], [
-								           'class' => 'btn btn-danger',
-								           'data' => [
-									           'confirm' => 'Точно удаляем?',
-									           'method' => 'post',
-								           ],
-							           ])
+							'format'    => 'raw',
+							'value'     => Html::a('Изменить', [
+									'news/edit',
+									'id' => $item->id
+								], ['class' => 'btn btn-primary'])
+							               . '  ' .
+							               Html::a('Удалить', ['news/delete', 'id' => $item->id], [
+								               'class' => 'btn btn-danger',
+								               'data'  => [
+									               'confirm' => 'Точно удаляем?',
+									               'method'  => 'post',
+								               ],
+							               ])
 						],
 					],
 				]) ?>
 			<?php endforeach ?>
 		<?php endif ?>
 	</div>
+	<div>
+		<?php $sponsors = $model->getSponsors()->all();
+		foreach($sponsors as $sponsor){
+			echo $sponsor->getUser()->username .', ';
+		}
+		?>
+		<?php $form = \yii\widgets\ActiveForm::begin(['action' => ['sponsor/add']]); ?>
+		<?= $form->field($model, 'event_id')->hiddenInput(['value' => $model->id, 'name' => 'event_id'])->label('') ?>
+		<?= Html::submitButton('Стать спонсором', ['class' => 'btn btn-primary']) ?>
+		<?php \yii\widgets\ActiveForm::end(); ?>
+	</div>
+
 </div>
