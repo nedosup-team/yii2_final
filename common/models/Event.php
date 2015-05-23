@@ -153,12 +153,6 @@ class Event extends \yii\db\ActiveRecord {
 		return Category::findOne(['id' => $this->category_id])->title;
 	}
 
-	public function getAuthorName()
-	{
-
-		return $this->getAuthor();
-	}
-
 	public function getStatusName()
 	{
 		$statuses = [

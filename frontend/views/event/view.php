@@ -53,5 +53,44 @@ $this->params['breadcrumbs'][] = $this->title;
 			'address',
 		],
 	]) ?>
+	<div class="create-news">
+		<?= $this->render('@frontend/views/news/_form', [
+			'model'    => new \common\models\News(),
+			'event_id' => $model->id
+		]) ?>
+	</div>
+	<div>
+		<?php $news = $model->getNews()->all() ?>
 
+		<?php if (count($news)): ?>
+			<h4>Опубликованные новости</h4>
+			<?php foreach ($news as $item): ?>
+				<?= DetailView::widget([
+					'model' => $item,
+					'attributes' => [
+						'title',
+						'created_at:datetime',
+						[
+							'attribute' => 'author_id',
+							'value' => $model->getAuthor()->one()->username,
+						],
+						'description:ntext',
+						[
+							'attribute' => 'actions',
+							'format'=>'raw',
+							'value' => Html::a('Изменить', ['news/edit', 'id' => $item->id], ['class' => 'btn btn-primary'])
+							           .'  '.
+							           Html::a('Удалить', ['news/delete', 'id' => $item->id], [
+								           'class' => 'btn btn-danger',
+								           'data' => [
+									           'confirm' => 'Точно удаляем?',
+									           'method' => 'post',
+								           ],
+							           ])
+						],
+					],
+				]) ?>
+			<?php endforeach ?>
+		<?php endif ?>
+	</div>
 </div>

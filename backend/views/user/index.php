@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use common\models\User;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -13,28 +15,57 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
-            // 'email:email',
-            // 'status',
-            // 'created_at',
-            // 'updated_at',
-            // 'role',
+            'email:email',
+            [
+                'attribute' => 'status',
+                'value' => function ($model, $key, $index, $column) {
+                    return Html::activeDropDownList($model, 'role',
+                    [
+                        User::ROLE_USER => 'Пользователь',
+                        User::ROLE_ADMIN  => 'Администратор'
+                    ],
+                    [
+                        'data-id' => $model->id,
+                        'onchange' => '
+                           document.getElementById("user_'.$model->id.'").value = this.value;
+                        '
+                    ]
 
-            ['class' => 'yii\grid\ActionColumn'],
+                    );
+                },
+                'format' => 'raw',
+                'filter' => [
+                    User::ROLE_USER => 'Пользователь',
+                    User::ROLE_ADMIN  => 'Администратор'
+                ]
+            ],
+            [
+                'value' => function ($model, $key, $index, $column) {
+                    /* @var User $model */
+                    $html = Html::beginForm('/index.php?r=users/update&id='.$model->id);
+                    $html .= Html::input('hidden','User[role]',$model->status, ['id' => 'user_'.$model->id]);
+                    $html .= Html::submitButton('Обновить', ['class' => 'btn btn-success']);
+                    $html .= Html::endForm();
+                    return $html;
+                },
+                'format' => 'raw',
+                'filter' => [
+                    User::ROLE_USER => 'Пользователь',
+                    User::ROLE_ADMIN  => 'Администратор'
+                ]
+            ],
         ],
     ]); ?>
 
 </div>
+<style>
+    .table.table-striped > tbody > tr > td {
+        vertical-align: middle;
+    }
+</style>
