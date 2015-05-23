@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "events".
@@ -40,13 +41,23 @@ class Events extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            [['title', 'created_at', 'updated_at'], 'required'],
-            [['content', 'description'], 'string'],
-            [['status', 'author_id', 'category_id', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'lat', 'lng', 'address'], 'string', 'max' => 255]
+            [['title'], 'required'],
+            [['content', 'description', 'lat', 'lng', 'address'], 'string'],
+            [['status', 'author_id', 'category_id'], 'integer'],
+            [['title'], 'string', 'max' => 255]
         ];
     }
 
@@ -60,13 +71,7 @@ class Events extends \yii\db\ActiveRecord
             'title' => 'Title',
             'content' => 'Content',
             'description' => 'Description',
-            'status' => 'Status',
-            'author_id' => 'Author ID',
-            'category_id' => 'Category ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'lat' => 'Lat',
-            'lng' => 'Lng',
+            'category_id' => 'Категория',
             'address' => 'Address',
         ];
     }
@@ -74,33 +79,33 @@ class Events extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEventParticipants()
-    {
-        return $this->hasMany(EventParticipant::className(), ['event_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEventSpeakers()
-    {
-        return $this->hasMany(EventSpeaker::className(), ['event_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEventTypes()
-    {
-        return $this->hasMany(EventType::className(), ['event_id' => 'id']);
-    }
+//    public function getEventParticipants()
+//    {
+//        return $this->hasMany(EventParticipant::className(), ['event_id' => 'id']);
+//    }
+//
+//    /**
+//     * @return \yii\db\ActiveQuery
+//     */
+//    public function getEventSpeakers()
+//    {
+//        return $this->hasMany(EventSpeaker::className(), ['event_id' => 'id']);
+//    }
+//
+//    /**
+//     * @return \yii\db\ActiveQuery
+//     */
+//    public function getEventTypes()
+//    {
+//        return $this->hasMany(EventType::className(), ['event_id' => 'id']);
+//    }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getCategory()
     {
-        return $this->hasOne(Categories::className(), ['id' => 'category_id']);
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
     /**

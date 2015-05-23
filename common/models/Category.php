@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "categories".
@@ -15,7 +16,7 @@ use Yii;
  *
  * @property Events[] $events
  */
-class Categories extends \yii\db\ActiveRecord
+class Category extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -28,12 +29,21 @@ class Categories extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            [['title', 'created_at', 'updated_at'], 'required'],
+            [['title'], 'required'],
             [['description'], 'string'],
-            [['created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 255]
         ];
     }
@@ -47,8 +57,6 @@ class Categories extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'description' => 'Description',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
         ];
     }
 
