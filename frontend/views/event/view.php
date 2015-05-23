@@ -10,38 +10,21 @@ $this->params['breadcrumbs'][] = ['label' => 'Events', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="third-step">
-	<div class="nav text-center">
-		<div class="row">
-			<div class="small-6 small-centered columns">
-				<dl class="sub-nav" role="menu" title="Filter Menu List">
-					<dd class="active" role="menuitem"><a class="" href="#">Info</a></dd>
-					<dd role="menuitem"><a class="" href="#">News</a></dd>
-					<dd role="menuitem"><a class="" href="#">Speakers</a></dd>
-					<dd role="menuitem"><a class="" href="#">Participants</a></dd>
-				</dl>
-			</div>
-		</div>
-	</div>
 	<div class="content">
 		<div class="row">
 			<div class="small-3 columns">
 				<div class="author">
 					<img src="http://placehold.it/80x80&amp;text=[img]">
 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi animi hic, dignissimos ullam
-						facere molestiae, ratione eaque maiores dolore ut neque sapiente recusandae debitis minima culpa
-						incidunt eligendi fuga perferendis?</p>
+					<p><?= $model->description ?></p>
 				</div>
 				<div class="participants">
-					<h4>Participants</h4>
-
+					<h4>На это событие идут:</h4>
 					<div class="row">
-						<div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]"></div>
-						<div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]"></div>
-						<div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]"></div>
-						<div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]"></div>
-						<div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]"></div>
-						<div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]"></div>
+                    <?php foreach ($model->getEventParticipantsList() as $participante): ?>
+                        <?php $user = \common\models\User::find()->where(['id' => $participante['user_id']])->asArray()->one() ?>
+                        <div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]"><?= $user['username'] ?></div>
+                    <?php endforeach ?>
 					</div>
 				</div>
 
@@ -105,13 +88,13 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="small-3 columns">
 				<div class="socials">
 					<div class="icon-bar three-up">
-						<a class="item">
+						<a class="item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode(Yii::$app->request->getUrl()) ?>">
 							<i class="fi-facebook">fb</i>
 						</a>
-						<a class="item">
+						<a class="item" target="_blank" href="https://twitter.com/home?status=<?= urlencode(Yii::$app->request->getUrl()) ?>">
 							<i class="fi-twitter">tw</i>
 						</a>
-						<a class="item">
+						<a class="item" target="_blank" href="https://plus.google.com/share?url=<?= urlencode(Yii::$app->request->getUrl()) ?>">
 							<i class="fi-google">g+</i>
 						</a>
 					</div>
@@ -137,16 +120,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 		</div>
 	</div>
-	<div>
-
-	</div>
-</div>
-
-
-<div class="events-view">
-	<div>
-
-		<
-	</div>
+	<script type="text/javascript">
+		window.event_id = '<?= $model->id ?>';
+	</script>
 
 </div>
