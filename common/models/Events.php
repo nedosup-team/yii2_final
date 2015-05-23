@@ -79,10 +79,10 @@ class Events extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-//    public function getEventParticipants()
-//    {
-//        return $this->hasMany(EventParticipant::className(), ['event_id' => 'id']);
-//    }
+    public function getEventParticipants()
+    {
+        return $this->hasMany(EventParticipant::className(), ['event_id' => 'id']);
+    }
 //
 //    /**
 //     * @return \yii\db\ActiveQuery
