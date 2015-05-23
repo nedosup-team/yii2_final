@@ -1,8 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Category;
 use common\models\LoginForm;
-use common\models\Project;
 use common\models\User;
 use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
@@ -10,6 +10,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use Yii;
 use yii\base\InvalidParamException;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
@@ -71,7 +72,14 @@ class SiteController extends Controller {
 	{
 		$model = new LoginForm();
 
-		return $this->render('index', ['model' => $model]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Category::find(),
+        ]);
+
+		return $this->render('index', [
+            'model' => $model,
+            'categories' => Category::getEventsList(),
+        ]);
 	}
 
 	public function actionLogin()

@@ -29,7 +29,7 @@ AppAsset::register($this);
         <div class="logo"><img src="/images/logo.png" alt=""></div>
         <div class="login">
             <?php if (Yii::$app->user->isGuest) : ?>
-                <?php $form = ActiveForm::begin(['id' => 'login-form','action'=>'/site/login','method'=>'post']); ?>
+                <?php $form = ActiveForm::begin(['id' => 'login-form', 'action' => '/site/login', 'method' => 'post']); ?>
                 <label for="login">Логин</label>
                 <input type="text" name="LoginForm[username]" id="login">
                 <label for="password">Пароль</label>
@@ -37,9 +37,9 @@ AppAsset::register($this);
                 <input type="submit" value="Войти">
                 <?php ActiveForm::end(); ?>
                 <a href="<?= \yii\helpers\Url::toRoute('/site/signup') ?>">Регистрация</a>
-                <?php else : ?>
-                <?php $form = ActiveForm::begin(['action'=>'/site/logout','method'=>'post']); ?>
-                    <button class="btn btn-danger">Выйти (<?= Yii::$app->user->identity->username ?>)</button>
+            <?php else : ?>
+                <?php $form = ActiveForm::begin(['action' => '/site/logout', 'method' => 'post']); ?>
+                <button class="btn btn-danger">Выйти (<?= Yii::$app->user->identity->username ?>)</button>
                 <?php ActiveForm::end(); ?>
 
             <?php endif; ?>
@@ -47,18 +47,18 @@ AppAsset::register($this);
         </div>
 
         <div class="header-steps text-center">
-         <div class="row">
-          <div class="small-2 small-offset-3 columns active">1</div>
-          <div class="small-2 columns">2</div>
-          <div class="small-2 end columns">3</div>
+            <div class="row">
+                <div class="small-2 small-offset-3 columns active"><span>1</span></div>
+                <div class="small-2 columns"><span>2</span></div>
+                <div class="small-2 end columns"><span>3</span></div>
+            </div>
         </div>
-       </div>
 
     </div>
     <?= Alert::widget() ?>
     <?= $content ?>
 </div>
-    <?php $this->endBody() ?>
+<?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>
