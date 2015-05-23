@@ -26,7 +26,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div class="global-wrap">
     <div id="header">
-        <div class="logo"><img src="/images/logo.png" alt=""></div>
+        <div class="logo"><img src="/images/logo1.png" alt=""></div>
         <div class="login">
             <?php if (Yii::$app->user->isGuest) : ?>
                 <?php $form = ActiveForm::begin(['id' => 'login-form', 'action' => '/site/login', 'method' => 'post']); ?>
@@ -59,6 +59,23 @@ AppAsset::register($this);
     <?= $content ?>
 </div>
 <?php $this->endBody() ?>
+<script>
+    jQuery('#test_test').on('click', function(e) {
+        e.preventDefault();
+
+        jQuery.ajax({
+            url: "http://localhost:8888/participant/create",
+            method: 'POST',
+            data: {
+                event_id: 1,
+                user_id: 1
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        })
+    })
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>
