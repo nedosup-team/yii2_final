@@ -32,13 +32,13 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Category::find(),
-        ]);
+        $cat_id = Yii::$app->request->get('category_id');
 
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
+        if (!empty($cat_id)) {
+            return $this->redirect('/category/' . $cat_id);
+        } else {
+            return $this->redirect('/');
+        }
     }
 
     /**
@@ -50,6 +50,7 @@ class CategoryController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'category_id' => $id
         ]);
     }
 

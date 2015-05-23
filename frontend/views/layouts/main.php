@@ -26,7 +26,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div class="global-wrap">
     <div id="header">
-        <div class="logo"><img src="/images/logo1.png" alt=""></div>
+        <div class="logo"><img src="/images/logo.png" alt=""></div>
         <div class="login">
             <?php if (Yii::$app->user->isGuest) : ?>
                 <?php $form = ActiveForm::begin(['id' => 'login-form', 'action' => '/site/login', 'method' => 'post']); ?>
@@ -44,14 +44,6 @@ AppAsset::register($this);
 
             <?php endif; ?>
 
-        </div>
-
-        <div class="header-steps text-center">
-            <div class="row">
-                <div class="small-2 small-offset-3 columns active"><span>1</span></div>
-                <div class="small-2 columns"><span>2</span></div>
-                <div class="small-2 end columns"><span>3</span></div>
-            </div>
         </div>
 
     </div>
