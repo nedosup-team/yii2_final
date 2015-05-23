@@ -23,7 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
 					<div class="row">
                     <?php foreach ($model->getEventParticipantsList() as $participante): ?>
                         <?php $user = \common\models\User::find()->where(['id' => $participante['user_id']])->asArray()->one() ?>
-                        <div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]"><?= $user['username'] ?></div>
+                        <div class="small-4 columns"><img src="http://placehold.it/80x80&amp;text=[img]">
+                            <a href="/user/<?= $participante['user_id'] ?>"><?= $user['username'] ?></a></div>
                     <?php endforeach ?>
 					</div>
 				</div>

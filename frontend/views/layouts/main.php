@@ -44,6 +44,7 @@ AppAsset::register($this);
                 <?php ActiveForm::end(); ?>
                 <a href="<?= \yii\helpers\Url::toRoute('/site/signup') ?>">Регистрация</a>
             <?php else : ?>
+                <a class="btn btn-danger" style="color: #ffffff" href="/user/<?= Yii::$app->user->identity->getId() ?>">Профиль</a>
                 <?php $form = ActiveForm::begin(['action' => '/site/logout', 'method' => 'post']); ?>
                 <button class="btn btn-danger">Выйти (<?= Yii::$app->user->identity->username ?>)</button>
                 <?php ActiveForm::end(); ?>
