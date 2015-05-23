@@ -21,13 +21,14 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'http://maps.google.com/maps/api/js?sensor=false',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'nonzod\foundation\FoundationAsset',
         'nonzod\foundation\FoundationAdditionalAsset',
-//        'nonzod\foundation\ActiveFormAsset',
-//        'nonzod\foundation\FoundationIconAsset',
+        'nonzod\foundation\ActiveFormAsset',
+        'nonzod\foundation\FoundationIconAsset',
     ];
 }

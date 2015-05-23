@@ -105,6 +105,7 @@ sudo service nginx restart
 sudo service php5-fpm restart
 sudo service mysql restart
 
+php /var/www/init --env=Production
 echo '
 ----------------------------------------
 DONE!

@@ -25,15 +25,20 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => 'Помогатор 9000',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
-            $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-            ];
+            if (!Yii::$app->user->isGuest && \common\models\User::ROLE_ADMIN == Yii::$app->user->identity->role) {
+                $menuItems[] = ['label' => 'Пользователи', 'url' => ['/users']];
+                $menuItems[] = ['label' => 'Программы', 'url' => ['/programs']];
+                $menuItems[] = ['label' => 'Проекты', 'url' => ['/projects']];
+                $menuItems[] = ['label' => 'Типы', 'url' => ['/types']];
+                $menuItems[] = ['label' => 'Новости', 'url' => ['/news']];
+                $menuItems[] = ['label' => 'Подписчики', 'url' => ['/subscribers']];
+            }
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {

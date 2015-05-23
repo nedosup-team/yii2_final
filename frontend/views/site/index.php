@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 $this->title = 'My Yii Application';
 ?>
+<<<<<<< HEAD
 <div class="site-index">
 
     <div class="body-content">
@@ -34,5 +35,14 @@ $this->title = 'My Yii Application';
 
         
 
+=======
+<div class="right-part">
+    <div class="right-part-wrap" id="map"></div>
+</div>
+<div class="left-part">
+    <div class="left-part-wrap">
+        <p>Найденные проекты:</p>
+        <ul></ul>
+>>>>>>> 9c961987e33a19f49ef3c0992212d7fb52c0c1fc
     </div>
 </div>
