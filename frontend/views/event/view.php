@@ -72,29 +72,19 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php endif; ?>
 				<div class="comments">
 					<h4>Коментарии</h4>
-
-					<div class="row">
-						<div class="small-2 columns"><img src="http://placehold.it/50x50&amp;text=[img]"></div>
-						<div class="small-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation
-								eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-					</div>
-					<div class="row">
-						<div class="small-2 columns"><img src="http://placehold.it/50x50&amp;text=[img]"></div>
-						<div class="small-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation
-								eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-					</div>
+					<div class="fb-comments" data-href="<?= \yii\helpers\Url::to(Yii::$app->request->getUrl(),true) ?>" data-numposts="5" data-colorscheme="light"></div>
 				</div>
 			</div>
 			<div class="small-3 columns">
 				<div class="socials">
 					<div class="icon-bar three-up">
-						<a class="item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode(Yii::$app->request->getUrl()) ?>">
+						<a class="item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode(\yii\helpers\Url::to(Yii::$app->request->getUrl(),true)) ?>">
 							<i class="fi-facebook">fb</i>
 						</a>
-						<a class="item" target="_blank" href="https://twitter.com/home?status=<?= urlencode(Yii::$app->request->getUrl()) ?>">
+						<a class="item" target="_blank" href="https://twitter.com/home?status=<?= urlencode(\yii\helpers\Url::to(Yii::$app->request->getUrl(),true)) ?>">
 							<i class="fi-twitter">tw</i>
 						</a>
-						<a class="item" target="_blank" href="https://plus.google.com/share?url=<?= urlencode(Yii::$app->request->getUrl()) ?>">
+						<a class="item" target="_blank" href="https://plus.google.com/share?url=<?= urlencode(\yii\helpers\Url::to(Yii::$app->request->getUrl(),true)) ?>">
 							<i class="fi-google">g+</i>
 						</a>
 					</div>
