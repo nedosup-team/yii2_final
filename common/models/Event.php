@@ -96,11 +96,11 @@ class Event extends \yii\db\ActiveRecord {
 	/**
 	 * @return \yii\db\ActiveQuery
 	 */
-//    public function getEventParticipants()
-//    {
-//        return $this->hasMany(EventParticipant::className(), ['event_id' => 'id']);
-//    }
-//
+    public function getEventParticipants()
+    {
+        return $this->hasMany(EventParticipant::className(), ['event_id' => 'id']);
+    }
+
 //    /**
 //     * @return \yii\db\ActiveQuery
 //     */
@@ -176,4 +176,9 @@ class Event extends \yii\db\ActiveRecord {
 	{
 		return (bool) $this->author_id == Yii::$app->getUser()->getId();
 	}
+
+    public function getEventParticipantsList()
+    {
+        return EventParticipant::find()->where(['event_id'=>$this->id])->asArray()->all();
+    }
 }
