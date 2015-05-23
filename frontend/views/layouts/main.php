@@ -45,9 +45,14 @@ AppAsset::register($this);
             <?php endif; ?>
 
         </div>
-        <div class="program-filter"><form action=""><label>Выберите программу</label><select name="" id=""></select></form></div>
-        <div class="project-filter"><form action=""><label>Выберите проект</label><select name="" id=""></select></form></div>
-        <div class="type-filter"><form action=""><label>Выберите тип помощи</label><select name="" id=""></select></form></div>
+
+        <div class="header-steps text-center">
+         <div class="row">
+          <div class="small-2 small-offset-3 columns active">1</div>
+          <div class="small-2 columns">2</div>
+          <div class="small-2 end columns">3</div>
+        </div>
+       </div>
 
     </div>
     <?= Alert::widget() ?>
