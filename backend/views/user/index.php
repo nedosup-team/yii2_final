@@ -6,15 +6,15 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Programs';
+$this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="program-index">
+<div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Program', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -22,10 +22,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'title',
-            'description:ntext',
-            'created_at:datetime',
-            'updated_at:datetime',
+            'id',
+            'username',
+            'auth_key',
+            'password_hash',
+            'password_reset_token',
+            // 'email:email',
+            // 'status',
+            // 'created_at',
+            // 'updated_at',
+            // 'role',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

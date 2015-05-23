@@ -8,8 +8,16 @@ $config = [
             'cookieValidationKey' => '6XZr8wRMUzI4hzSY5ynIj9da-aTpmT-l',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'class' => 'yii\web\UrlManager',
             'showScriptName' => false,
+            'enablePrettyUrl' => true,
+            'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'project'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'subscribe'],
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ],
         ],
     ],
 ];
@@ -20,7 +28,12 @@ if (!YII_ENV_TEST) {
     $config['modules']['debug'] = 'yii\debug\Module';
 
     $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = 'yii\gii\Module';
+//    $config['modules']['gii'] = 'yii\gii\Module';
+
+    $config['modules']['gii'] = [
+        'class' => \yii\gii\Module::className(),
+        'allowedIPs' => ['*']
+    ];
 }
 
 return $config;

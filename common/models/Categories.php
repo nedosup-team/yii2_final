@@ -1,13 +1,11 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
-use common\models\Project;
-use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "programs".
+ * This is the model class for table "categories".
  *
  * @property integer $id
  * @property string $title
@@ -15,38 +13,16 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property Project[] $projects
+ * @property Events[] $events
  */
-class Program extends \yii\db\ActiveRecord
+class Categories extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'programs';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function fields()
-    {
-        return [
-            'id',
-            'title',
-            'description'
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
+        return 'categories';
     }
 
     /**
@@ -55,8 +31,9 @@ class Program extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'created_at', 'updated_at'], 'required'],
             [['description'], 'string'],
+            [['created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 255]
         ];
     }
@@ -70,14 +47,16 @@ class Program extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'description' => 'Description',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProjects()
+    public function getEvents()
     {
-        return $this->hasMany(Project::className(), ['program_id' => 'id']);
+        return $this->hasMany(Events::className(), ['category_id' => 'id']);
     }
 }
