@@ -28,7 +28,7 @@ class AppAsset extends AssetBundle
         'yii\bootstrap\BootstrapAsset',
         'nonzod\foundation\FoundationAsset',
         'nonzod\foundation\FoundationAdditionalAsset',
-//        'nonzod\foundation\ActiveFormAsset',
-//        'nonzod\foundation\FoundationIconAsset',
+        'nonzod\foundation\ActiveFormAsset',
+        'nonzod\foundation\FoundationIconAsset',
     ];
 }
