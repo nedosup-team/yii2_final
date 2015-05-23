@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'http://maps.google.com/maps/api/js?sensor=false',
     ];
     public $depends = [
         'yii\web\YiiAsset',
