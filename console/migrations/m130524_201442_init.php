@@ -28,8 +28,8 @@ class m130524_201442_init extends Migration
 
         $this->insert('{{%user}}', [
             'id' => 1,
-            'username' => "helper",
-            'auth_key' => "aCq5qiPVKO5H4Yn3HzvatHx1Aj_RjUHo",
+            'username' => "admin",
+            'auth_key' => "iM53eQsUrioK-kGF7-kfknzYHaynrzsa",
             'password_hash' => '$2y$13$ptJMksESBfxZFz7XE4gZCey/JREZlKK0HDxrDuTOPnkkh.jjX3fNO',
             'password_reset_token' => NULL,
             'email' => "helper@yii2.local",
