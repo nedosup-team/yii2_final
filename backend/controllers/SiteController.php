@@ -65,7 +65,7 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         } else {
-            return $this->redirect(['users/index']);
+            return $this->render('index');
         }
     }
 
