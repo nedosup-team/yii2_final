@@ -16,7 +16,7 @@ class m150326_221557_news_table extends Migration
             'id' => Schema::TYPE_PK,
             'title' => Schema::TYPE_STRING . ' NOT NULL',
             'description' => Schema::TYPE_TEXT,
-            'project_id' => Schema::TYPE_INTEGER,
+            'event_id' => Schema::TYPE_INTEGER,
             'author_id' => Schema::TYPE_INTEGER,
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',

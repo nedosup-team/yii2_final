@@ -20,7 +20,7 @@ class m150326_221625_types_table extends Migration
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
 
-        $this->addForeignKey("fk_project_type", "project_type", "type_id", "types", "id", "CASCADE", "RESTRICT");
+        $this->addForeignKey("fk_event_type", "event_type", "type_id", "types", "id", "CASCADE", "RESTRICT");
     }
 
     public function down()

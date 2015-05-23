@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m150326_221700_subscribers_table extends Migration
+class m150326_221657_categories_table extends Migration
 {
     public function up()
     {
@@ -12,18 +12,19 @@ class m150326_221700_subscribers_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('subscribers', [
+        $this->createTable('categories', [
             'id' => Schema::TYPE_PK,
-            'email' => Schema::TYPE_STRING . ' NOT NULL',
+            'title' => Schema::TYPE_STRING . ' NOT NULL',
+            'description' => Schema::TYPE_TEXT,
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
 
-//        $this->addForeignKey("fk_subscriber_project", "subscriber", "id", "project_subscriber", "subscriber_id", "CASCADE", "RESTRICT");
+        $this->addForeignKey("fk_category_event", "events", "category_id", "categories", "id", "CASCADE", "RESTRICT");
     }
 
     public function down()
     {
-        $this->dropTable('subscribers');
+        $this->dropTable('categories');
     }
 }
