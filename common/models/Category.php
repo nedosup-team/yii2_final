@@ -6,27 +6,24 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "news".
+ * This is the model class for table "categories".
  *
  * @property integer $id
  * @property string $title
  * @property string $description
- * @property integer $event_id
- * @property integer $author_id
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property Events $event
- * @property User $author
+ * @property Event[] $events
  */
-class News extends \yii\db\ActiveRecord
+class Category extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'news';
+        return 'categories';
     }
 
     /**
@@ -47,7 +44,6 @@ class News extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['description'], 'string'],
-            [['event_id', 'author_id'], 'integer'],
             [['title'], 'string', 'max' => 255]
         ];
     }
@@ -61,24 +57,14 @@ class News extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'description' => 'Description',
-            'event_id' => 'Event ID',
-            'created_at' => 'Created At',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEvent()
+    public function getEvents()
     {
-        return $this->hasOne(Events::className(), ['id' => 'event_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAuthor()
-    {
-        return $this->hasOne(User::className(), ['id' => 'author_id']);
+        return $this->hasMany(Event::className(), ['category_id' => 'id']);
     }
 }

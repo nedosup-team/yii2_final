@@ -32,12 +32,8 @@ AppAsset::register($this);
                 ],
             ]);
             if (!Yii::$app->user->isGuest && \common\models\User::ROLE_ADMIN == Yii::$app->user->identity->role) {
-                $menuItems[] = ['label' => 'Пользователи', 'url' => ['/users']];
-                $menuItems[] = ['label' => 'Программы', 'url' => ['/programs']];
-                $menuItems[] = ['label' => 'Проекты', 'url' => ['/projects']];
-                $menuItems[] = ['label' => 'Типы', 'url' => ['/types']];
-                $menuItems[] = ['label' => 'Новости', 'url' => ['/news']];
-                $menuItems[] = ['label' => 'Подписчики', 'url' => ['/subscribers']];
+                $menuItems[] = ['label' => 'Пользователи', 'url' => ['/user']];
+                $menuItems[] = ['label' => 'Категории', 'url' => ['/category']];
             }
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

@@ -36,6 +36,15 @@ class m150326_221604_events_table extends Migration
 
     public function down()
     {
+        $this->dropIndex('index_event_user', 'events');
+        $this->dropIndex('index_event_category', 'events');
+
+        $this->dropForeignKey("fk_news_event", "news");
+        $this->dropForeignKey("fk_user_event", "events");
+        $this->dropForeignKey("fk_event_participant", "event_participant");
+        $this->dropForeignKey("fk_event_speaker", "event_speaker");
+        $this->dropForeignKey("fk_type_event", "event_type");
+
         $this->dropTable('events');
     }
 }
