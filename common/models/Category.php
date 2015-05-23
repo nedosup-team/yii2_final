@@ -14,7 +14,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property Events[] $events
+ * @property Event[] $events
  */
 class Category extends \yii\db\ActiveRecord
 {
@@ -65,6 +65,6 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getEvents()
     {
-        return $this->hasMany(Events::className(), ['category_id' => 'id']);
+        return $this->hasMany(Event::className(), ['category_id' => 'id']);
     }
 }
