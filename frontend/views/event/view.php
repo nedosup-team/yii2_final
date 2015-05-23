@@ -88,13 +88,13 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="small-3 columns">
 				<div class="socials">
 					<div class="icon-bar three-up">
-						<a class="item">
+						<a class="item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode(Yii::$app->request->getUrl()) ?>">
 							<i class="fi-facebook">fb</i>
 						</a>
-						<a class="item">
+						<a class="item" target="_blank" href="https://twitter.com/home?status=<?= urlencode(Yii::$app->request->getUrl()) ?>">
 							<i class="fi-twitter">tw</i>
 						</a>
-						<a class="item">
+						<a class="item" target="_blank" href="https://plus.google.com/share?url=<?= urlencode(Yii::$app->request->getUrl()) ?>">
 							<i class="fi-google">g+</i>
 						</a>
 					</div>
