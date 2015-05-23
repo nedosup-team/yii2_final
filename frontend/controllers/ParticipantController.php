@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use common\models\EventParticipant;
+
 class ParticipantController extends \yii\web\Controller
 {
     public $modelClass = 'common\models\EventParticipant';
@@ -33,7 +35,7 @@ class ParticipantController extends \yii\web\Controller
 
     public function actionCreate()
     {
-        return json_encode(['success']);
+        die(json_encode(['success']));
     }
 
     /**
@@ -50,6 +52,16 @@ class ParticipantController extends \yii\web\Controller
      */
     public function checkAccess($action, $model = null, $params = [])
     {
+        $user_id = \Yii::$app->request->post('user_id');
+        $event_id = \Yii::$app->request->post('event_id');
+        $relation = EventParticipant::find()->where(['user_id'=>$user_id, 'event_id'=>$event_id])->asArray()->one();
+
+//        var_dump($user_id, $event_id, $relation); die;
+
+        if (null !== $relation) {
+            die(json_encode(['exist']));
+        }
+
 //        if ('create' != $action) {
 //            return new ForbiddenHttpException('Нет доступа', 1);
 //        }
