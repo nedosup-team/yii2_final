@@ -6,6 +6,7 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="body-content">
+        <a id="test_test" href="#">Test</a>
 
         <div class="first-step">
             <div class="row">
