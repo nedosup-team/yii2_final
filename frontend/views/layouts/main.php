@@ -23,17 +23,10 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
-<<<<<<< HEAD
-    <?php $this->beginBody() ?>
-    <div class="wrap">
-        
-=======
 <?php $this->beginBody() ?>
 <div class="global-wrap">
     <div id="header">
         <div class="logo"><img src="/images/logo.png" alt=""></div>
->>>>>>> 9c961987e33a19f49ef3c0992212d7fb52c0c1fc
-
         <div class="login">
             <?php if (Yii::$app->user->isGuest) : ?>
                 <?php $form = ActiveForm::begin(['id' => 'login-form','action'=>'/site/login','method'=>'post']); ?>

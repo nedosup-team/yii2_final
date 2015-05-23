@@ -66,4 +66,14 @@ return array (
       '@nonzod/foundation' => $vendorDir . '/nonzod/yii2-foundation',
     ),
   ),
+  'nodge/yii2-eauth' => 
+  array (
+    'name' => 'nodge/yii2-eauth',
+    'version' => '2.2.3.0',
+    'alias' => 
+    array (
+      '@nodge/eauth' => $vendorDir . '/nodge/yii2-eauth/src',
+    ),
+    'bootstrap' => 'nodge\\eauth\\Bootstrap',
+  ),
 );
