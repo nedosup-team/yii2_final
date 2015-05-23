@@ -6,56 +6,33 @@ $this->title = 'My Yii Application';
 
     <div class="body-content">
 
-       <div class="row">
-          <div class="small-2 large-4 columns">...</div>
-          <div class="small-4 large-4 columns">...</div>
-          <div class="small-6 large-4 columns">...</div>
+       <div class="header-steps">
+         <div class="row">
+          <div class="small-2 small-offset-3 columns">1</div>
+          <div class="small-2 columns">2</div>
+          <div class="small-2 end columns">3</div>
         </div>
-        <div class="row">
-          <div class="large-3 columns">...</div>
-          <div class="large-6 columns">...</div>
-          <div class="large-3 columns">...</div>
-        </div>
-        <div class="row">
-          <div class="small-6 large-2 columns">...</div>
-          <div class="small-6 large-8 columns">...</div>
-          <div class="small-12 large-2 columns">...</div>
-        </div>
-        <div class="row">
-          <div class="small-3 columns">...</div>
-          <div class="small-9 columns">...</div>
-        </div>
-        <div class="row">
-          <div class="large-4 columns">...</div>
-          <div class="large-8 columns">...</div>
-        </div>
-        <div class="row">
-          <div class="small-6 large-5 columns">...</div>
-          <div class="small-6 large-7 columns">...</div>
-        </div>
-        <div class="row">
-          <div class="large-6 columns">...</div>
-          <div class="large-6 columns">...</div>
-        </div>
+       </div>
 
-        <div class="icon-bar five-up" role="navigation">
-          <a class="item" role="button" tabindex="0" aria-label="home">
-            <i class="fi-home"></i>
-          </a>
-          <a class="item" role="button" tabindex="0" aria-label="Bookmark">
-            <i class="fi-bookmark"></i>
-          </a>
-          <a class="item" role="button" tabindex="0" aria-label="Information">
-            <i class="fi-info"></i>
-          </a>
-          <a class="item" role="button" tabindex="0" aria-label="Mail">
-            <i class="fi-mail"></i>
-          </a>
-          <a class="item" role="button" tabindex="0" aria-label="Like">
-            <i class="fi-like"></i>
-          </a>
+       <div class="main-select">
+         <div class="row">
+            <div class="small-4 small-centered columns">
+              <form action="">
+                <label>Що вас цікавить?
+                  <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                  </select>
+                </label>
+              </form>
+              <a href="#" class="button round">Побачити все</a>
+            </div>
         </div>
-        <a href="#" class="button">Default Button</a>
+       </div>
+
+        
 
     </div>
 </div>
