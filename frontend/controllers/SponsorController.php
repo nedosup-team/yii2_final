@@ -10,15 +10,20 @@ class SponsorController extends \yii\web\Controller {
 
 	public function actionAdd()
 	{
-		$model           = new Sponsor();
-		$model->event_id = (int) \Yii::$app->request->post()['event_id'];
-		$model->user_id  = (int) \Yii::$app->getUser()->getId();
+		$event_id = \Yii::$app->request->post()['event_id'];
+		$user_id  = \Yii::$app->getUser()->getId();
 
-		$model->validate();
+		if ( !Sponsor::findOne(['event_id' => $event_id, 'user_id' => $user_id])) {
+			$model           = new Sponsor();
+			$model->event_id = (int) $event_id;
+			$model->user_id  = (int) $user_id;
 
-		$model->save();
+			$model->validate();
 
-		return $this->redirect(['/event/view', 'id' => $model->event_id]);
+			$model->save();
+		}
+
+		return $this->redirect(['/event/view', 'id' => $event_id]);
 
 	}
 
