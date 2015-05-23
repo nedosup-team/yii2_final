@@ -1,5 +1,49 @@
+#header {
+  position: relative;
+}
+#header .logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+}
+#header .logo img {
+  display: block;
+  width: 100%;
+}
+#header .go {
+  color: #FFF;
+  text-transform: uppercase;
+  font-size: 53px;
+  background: #6fd85b;
+  display: inline-block;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+#header .login {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 31px;
+}
+#header .login label, #header .login input, #header .login a, #header .login form {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  width: auto;
+  margin: 0;
+  margin-right: 20px;
+}
+#header .login form {
+  margin-right: 0;
+}
+
 .header-steps {
-  margin-bottom: 40px;
+  margin: 80px 0 40px;
 }
 .header-steps span {
   -moz-border-radius: 50%;
@@ -11,7 +55,8 @@
   display: block;
 }
 .header-steps .active span {
-  background: green;
+  background: #6fd85b;
+  border-color: #6FD85B;
   color: #FFF;
 }
 
